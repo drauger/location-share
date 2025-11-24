@@ -47,29 +47,14 @@ jobs:
     - name: Set up Android SDK
       uses: android-actions/setup-android@v2
 
-    - name: Decode Keystore
-      run: echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > keystore.jks
-
     - name: Make gradlew executable
       run: chmod +x gradlew
 
     - name: Build release APKs
       env:
         VERSION_NAME: ${{ steps.version.outputs.version }}
-        KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
       run: |
         ./gradlew assembleRelease
         mkdir release-apks
         cp client-app/build/outputs/apk/release/gnss-client-${VERSION_NAME}-release.apk release-apks/gnss-client-${VERSION_NAME}.apk
         cp server-app/build/outputs/apk/release/gnss-server-${VERSION_NAME}-release.apk release-apks/gnss-server-${VERSION_NAME}.apk
-
-    - name: Create GitHub Release
-      uses: softprops/action-gh-release@v1
-      with:
-        tag_name: ${{ steps.version.outputs.version }}
-        name: Release ${{ steps.version.outputs.version }}
-        draft: false
-        prerelease: false
-        files: |
-          release-apks/gnss-client-${{ steps.version.outputs.version }}.apk
-          release-apks/gnss-server-${{ steps.version.outputs.version }}.apk
