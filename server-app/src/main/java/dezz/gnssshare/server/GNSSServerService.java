@@ -231,10 +231,12 @@ public class GNSSServerService extends Service {
 
             lastServerResponse.setStatus(ServerStatus.AWAITING_LOCATION.name());
 
-            String provider = LocationManager.GPS_PROVIDER;
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-                provider = LocationManager.FUSED_PROVIDER;
-            }
+            // String provider = LocationManager.GPS_PROVIDER;
+
+            String provider = LocationManager.NETWORK_PROVIDER
+            // if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            //     provider = LocationManager.FUSED_PROVIDER;
+            // }
 
             locationManager.requestLocationUpdates(
                     provider,
