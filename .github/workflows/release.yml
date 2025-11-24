@@ -55,5 +55,5 @@ jobs:
         VERSION_NAME: ${{ steps.version.outputs.version }}
       run: |
         ./gradlew assembleDebug
-        mkdir debug-apks
-        cp server-app/build/outputs/apk/debug/gnss-server-${VERSION_NAME}-debug.apk debug-apks/gnss-server-${VERSION_NAME}.apk
+        mkdir apks
+        cp -R server-app/build/outputs/apk/* apks/
