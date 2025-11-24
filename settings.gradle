@@ -15,5 +15,5 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-include ':server-app', ':client-app', ':shared'
+include ':server-app', ':shared'
 rootProject.name = "GNSS Sharing System"
