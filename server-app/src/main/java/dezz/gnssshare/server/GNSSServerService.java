@@ -233,7 +233,7 @@ public class GNSSServerService extends Service {
 
             // String provider = LocationManager.GPS_PROVIDER;
 
-            String provider = LocationManager.NETWORK_PROVIDER
+            String provider = LocationManager.NETWORK_PROVIDER;
             // if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             //     provider = LocationManager.FUSED_PROVIDER;
             // }
