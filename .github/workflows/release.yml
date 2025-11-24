@@ -54,7 +54,7 @@ jobs:
       env:
         VERSION_NAME: ${{ steps.version.outputs.version }}
       run: |
-        ./gradlew assembleRelease
+        ./gradlew assembleDebug
         mkdir release-apks
         cp client-app/build/outputs/apk/release/gnss-client-${VERSION_NAME}-release.apk release-apks/gnss-client-${VERSION_NAME}.apk
         cp server-app/build/outputs/apk/release/gnss-server-${VERSION_NAME}-release.apk release-apks/gnss-server-${VERSION_NAME}.apk
