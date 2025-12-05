@@ -72,8 +72,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView technicalDetailsText;
     private RadioGroup locationSourceSwitch;
 
-    public String getLocationSourceSwitchState() {
-        return locationSourceSwitch.getCheckedRadioButtonId();
+    public int getLocationSourceSwitchState() {
+        return locationSourceSwitch.getCheckedRadioButtonId() % 3;
     }
 
     private final Handler mainHandler = new Handler(Looper.getMainLooper());
