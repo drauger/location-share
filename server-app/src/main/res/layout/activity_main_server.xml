@@ -148,22 +148,22 @@
 
                 <RadioButton
                     android:id="@+id/radioButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="46dp"
                     android:text="GNSS only"
                     android:visibility="visible" />
 
                 <RadioButton
                     android:id="@+id/radioButton2"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:text="Network only"
                     android:visibility="visible" />
 
                 <RadioButton
                     android:id="@+id/radioButton3"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="52dp"
                     android:text="Fused location"
                     android:visibility="visible" />
             </RadioGroup>
