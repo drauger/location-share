@@ -238,13 +238,13 @@ public class GNSSServerService extends Service {
             String provider;
 
             switch (PROVIDER) {
-                case (1):
+                case ("radioButton1"):
                     provider = LocationManager.GPS_PROVIDER;
                     break;
-                case (3):
+                case ("radioButton3"):
                     provider = LocationManager.FUSED_PROVIDER;
                     break;
-                case (2):
+                case ("radioButton2"):
                 default:
                     provider = LocationManager.NETWORK_PROVIDER;
                     break;
