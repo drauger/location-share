@@ -49,6 +49,10 @@
             android:padding="16dp">
 
             <!-- Status Section -->
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -116,6 +120,54 @@
             </LinearLayout>
 
             <!-- Control Buttons -->
+            <TextView
+                android:id="@+id/technical_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="4dp"
+                android:text="@string/technical_details"
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp" />
+
+            <RadioGroup
+                android:id="@+id/locationSourceSwitch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checkedButton="@id/radioButton"
+                android:visibility="visible">
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="Location Source"
+                    android:textColor="@color/text_primary"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <RadioButton
+                    android:id="@+id/radioButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="GNSS only"
+                    android:visibility="visible" />
+
+                <RadioButton
+                    android:id="@+id/radioButton2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Network only"
+                    android:visibility="visible" />
+
+                <RadioButton
+                    android:id="@+id/radioButton3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Fused location"
+                    android:visibility="visible" />
+            </RadioGroup>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -180,14 +232,6 @@
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/technical_details"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:lineSpacingExtra="4dp"
-                    android:text="@string/technical_details"
-                    android:textColor="@color/text_secondary"
-                    android:textSize="14sp" />
             </LinearLayout>
 
             <!-- Instructions Section -->
@@ -218,6 +262,10 @@
                     android:textColor="@color/text_secondary"
                     android:textSize="14sp" />
             </LinearLayout>
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
         </LinearLayout>
     </ScrollView>
 
@@ -232,4 +280,5 @@
         android:textColor="@color/text_secondary"
         android:textSize="12sp"
         android:linksClickable="true" />
+
 </LinearLayout>
