@@ -29,6 +29,7 @@ import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -69,6 +70,11 @@ public class MainActivity extends AppCompatActivity {
     private TextView statusText;
     private TextView permissionsStatusText;
     private TextView technicalDetailsText;
+    private RadioGroup locationSourceSwitch;
+
+    public int getLocationSourceSwitchState() {
+        return locationSourceSwitch.getCheckedRadioButtonId();
+    }
 
     private final Handler mainHandler = new Handler(Looper.getMainLooper());
     private final Runnable fillInterfaceListRunnable = new Runnable() {
@@ -120,6 +126,7 @@ public class MainActivity extends AppCompatActivity {
         statusText = findViewById(R.id.statusText);
         permissionsStatusText = findViewById(R.id.permissionsStatusText);
         technicalDetailsText = findViewById(R.id.technical_details);
+        locationSourceSwitch = findViewById(R.id.locationSourceSwitch);
 
         TextView header = findViewById(R.id.header);
         header.setText(String.format("%s %s", getString(R.string.app_name), appVersion));
@@ -128,6 +135,8 @@ public class MainActivity extends AppCompatActivity {
         startServiceButton.setOnClickListener(v -> startGNSSService());
         stopServiceButton.setOnClickListener(v -> stopGNSSService());
         findViewById(R.id.exportLogsButton).setOnClickListener(v -> exportLogs("gnss-server"));
+
+//        locationSourceSwitch.setOnCheckedChangeListener();
     }
 
     private void fillInterfaceList() {
@@ -185,6 +194,7 @@ public class MainActivity extends AppCompatActivity {
         GNSSServerService.setServiceEnabled(this, true);
 
         Intent serviceIntent = new Intent(this, GNSSServerService.class);
+        serviceIntent.putExtra("value", getLocationSourceSwitchState());
         startForegroundService(serviceIntent);
 
         updateUIState(true);

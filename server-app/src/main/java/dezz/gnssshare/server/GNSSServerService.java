@@ -56,6 +56,8 @@ public class GNSSServerService extends Service {
     private static final int NOTIFICATION_ID = 1;
     private static final String PREF_IS_SERVICE_ENABLED = "isServiceEnabled";
 
+    private int PROVIDER = 1;
+
     private static boolean running = false;
 
     private String serverStartError = null;
@@ -118,6 +120,8 @@ public class GNSSServerService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        PROVIDER = intent.getIntExtra("value", 1);
+
         serverStartError = null;
         startServer();
 
@@ -231,9 +235,24 @@ public class GNSSServerService extends Service {
 
             lastServerResponse.setStatus(ServerStatus.AWAITING_LOCATION.name());
 
+            String provider;
+
+            switch (PROVIDER) {
+                case (1):
+                    provider = LocationManager.GPS_PROVIDER;
+                    break;
+                case (3):
+                    provider = LocationManager.FUSED_PROVIDER;
+                    break;
+                case (2):
+                default:
+                    provider = LocationManager.NETWORK_PROVIDER;
+                    break;
+            }
+
             // String provider = LocationManager.GPS_PROVIDER;
 
-            String provider = LocationManager.NETWORK_PROVIDER;
+
             // if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             //     provider = LocationManager.FUSED_PROVIDER;
             // }
