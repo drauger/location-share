@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView technicalDetailsText;
     private RadioGroup locationSourceSwitch;
 
-    public int getLocationSourceSwitchState() {
+    public String getLocationSourceSwitchState() {
         return locationSourceSwitch.getCheckedRadioButtonId();
     }
 
@@ -194,6 +194,7 @@ public class MainActivity extends AppCompatActivity {
         GNSSServerService.setServiceEnabled(this, true);
 
         Intent serviceIntent = new Intent(this, GNSSServerService.class);
+        //serviceIntent.putExtra("value", getLocationSourceSwitchState());
         serviceIntent.putExtra("value", getLocationSourceSwitchState());
         startForegroundService(serviceIntent);
 
