@@ -56,7 +56,7 @@ public class GNSSServerService extends Service {
     private static final int NOTIFICATION_ID = 1;
     private static final String PREF_IS_SERVICE_ENABLED = "isServiceEnabled";
 
-    private String PROVIDER;
+    private int PROVIDER = 1;
 
     private static boolean running = false;
 
@@ -120,7 +120,7 @@ public class GNSSServerService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        PROVIDER = intent.getStringExtra("value");
+        PROVIDER = intent.getIntExtra("value", 1);
 
         serverStartError = null;
         startServer();
@@ -238,13 +238,13 @@ public class GNSSServerService extends Service {
             String provider;
 
             switch (PROVIDER) {
-                case ("radioButton1"):
+                case (0):
                     provider = LocationManager.GPS_PROVIDER;
                     break;
-                case ("radioButton3"):
+                case (2):
                     provider = LocationManager.FUSED_PROVIDER;
                     break;
-                case ("radioButton2"):
+                case (1):
                 default:
                     provider = LocationManager.NETWORK_PROVIDER;
                     break;
