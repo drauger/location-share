@@ -218,8 +218,8 @@ public class MainActivity extends AppCompatActivity {
         GNSSServerService.setServiceEnabled(this, true);
 
         Intent serviceIntent = new Intent(this, GNSSServerService.class);
-        //serviceIntent.putExtra("providerId", getLocationSourceSwitchState());
-        serviceIntent.putExtra("value", getLocationSourceSwitchState());
+        //serviceIntent.putExtra("value", getLocationSourceSwitchState());
+        serviceIntent.putExtra("providerId", getLocationSourceSwitchState());
         startForegroundService(serviceIntent);
 
         updateUIState(true);
