@@ -56,7 +56,7 @@ public class GNSSServerService extends Service {
     private static final int NOTIFICATION_ID = 1;
     private static final String PREF_IS_SERVICE_ENABLED = "isServiceEnabled";
 
-    private int providerId;
+    private int providerID;
 
     private static boolean running = false;
 
@@ -120,7 +120,7 @@ public class GNSSServerService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        providerId = intent.getIntExtra("providerId");
+        providerID = intent.getIntExtra("providerId");
 
         serverStartError = null;
         startServer();
@@ -237,7 +237,7 @@ public class GNSSServerService extends Service {
 
             String provider;
 
-            switch (providerId) {
+            switch (providerID) {
                 case (0):
                     provider = LocationManager.GPS_PROVIDER;
                     break;
