@@ -77,10 +77,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void locationSourceSwitchActions() {
-        if (serviceRunning) {
+        // if (serviceRunning) {
             stopGNSSService();
             startGNSSService();
-        }
+        // }
     }
 
 
