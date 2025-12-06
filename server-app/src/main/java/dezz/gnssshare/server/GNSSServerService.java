@@ -120,7 +120,7 @@ public class GNSSServerService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        providerID = intent.getIntExtra("providerId");
+        providerID = intent.getIntExtra("providerId", 1);
 
         serverStartError = null;
         startServer();
