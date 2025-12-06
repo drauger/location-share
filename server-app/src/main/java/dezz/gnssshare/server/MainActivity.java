@@ -76,14 +76,6 @@ public class MainActivity extends AppCompatActivity {
         return locationSourceSwitch.getCheckedRadioButtonId() % 3;
     }
 
-    private void locationSourceSwitchActions() {
-        // if (serviceRunning) {
-            stopGNSSService();
-            startGNSSService();
-        // }
-    }
-
-
     private final Handler mainHandler = new Handler(Looper.getMainLooper());
     private final Runnable fillInterfaceListRunnable = new Runnable() {
         @Override
@@ -144,7 +136,31 @@ public class MainActivity extends AppCompatActivity {
         stopServiceButton.setOnClickListener(v -> stopGNSSService());
         findViewById(R.id.exportLogsButton).setOnClickListener(v -> exportLogs("gnss-server"));
 
-        locationSourceSwitch.setOnCheckedChangeListener(v -> locationSourceSwitchActions());
+        locationSourceSwitch.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(RadioGroup group, int checkedId) {
+            // This method is called when the checked RadioButton in the RadioGroup changes.
+            // 'group' is the RadioGroup itself.
+            // 'checkedId' is the resource ID of the newly checked RadioButton.
+
+            // You can find the selected RadioButton using its ID:
+            RadioButton selectedRadioButton = findViewById(checkedId);
+
+            if (selectedRadioButton != null) {
+                // Perform actions based on the selected RadioButton
+                String selectedText = selectedRadioButton.getText().toString();
+                // Example: Display a Toast message
+                Toast.makeText(MainActivity.this, "Selected: " + selectedText, Toast.LENGTH_SHORT).show();
+
+                // You can also use a switch statement to handle specific RadioButtons
+                
+            }
+        // if (serviceRunning) {
+            stopGNSSService();
+            startGNSSService();
+        // }
+        }
+    });
     }
 
     private void fillInterfaceList() {
