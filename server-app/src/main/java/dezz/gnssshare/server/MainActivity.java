@@ -144,17 +144,17 @@ public class MainActivity extends AppCompatActivity {
             // 'checkedId' is the resource ID of the newly checked RadioButton.
 
             // You can find the selected RadioButton using its ID:
-            RadioButton selectedRadioButton = findViewById(checkedId);
+            // RadioButton selectedRadioButton = findViewById(checkedId);
 
-            if (selectedRadioButton != null) {
+            // if (selectedRadioButton != null) {
                 // Perform actions based on the selected RadioButton
-                String selectedText = selectedRadioButton.getText().toString();
+                // String selectedText = selectedRadioButton.getText().toString();
                 // Example: Display a Toast message
-                Toast.makeText(MainActivity.this, "Selected: " + selectedText, Toast.LENGTH_SHORT).show();
+                // Toast.makeText(MainActivity.this, "Selected: " + selectedText, Toast.LENGTH_SHORT).show();
 
                 // You can also use a switch statement to handle specific RadioButtons
                 
-            }
+            // }
         // if (serviceRunning) {
             stopGNSSService();
             startGNSSService();
