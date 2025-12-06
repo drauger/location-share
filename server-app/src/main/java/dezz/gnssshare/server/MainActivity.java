@@ -72,9 +72,16 @@ public class MainActivity extends AppCompatActivity {
     private TextView technicalDetailsText;
     private RadioGroup locationSourceSwitch;
 
-    public int getLocationSourceSwitchState() {
+    private int getLocationSourceSwitchState() {
         return locationSourceSwitch.getCheckedRadioButtonId() % 3;
     }
+
+    private void locationSourceSwitchActions() {
+        if (serviceRunning) {
+            stopGNSSService();
+            startGNSSService();
+    }
+
 
     private final Handler mainHandler = new Handler(Looper.getMainLooper());
     private final Runnable fillInterfaceListRunnable = new Runnable() {
@@ -136,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
         stopServiceButton.setOnClickListener(v -> stopGNSSService());
         findViewById(R.id.exportLogsButton).setOnClickListener(v -> exportLogs("gnss-server"));
 
-//        locationSourceSwitch.setOnCheckedChangeListener();
+        locationSourceSwitch.setOnCheckedChangeListener(v -> locationSourceSwitchActions());
     }
 
     private void fillInterfaceList() {
