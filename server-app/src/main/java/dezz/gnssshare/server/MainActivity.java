@@ -64,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
             Manifest.permission.ACCESS_BACKGROUND_LOCATION,
     };
 
+    // private boolean isServiceRunning = false;
+
     private Button requestPermissionsButton;
     private Button startServiceButton;
     private Button stopServiceButton;
@@ -155,10 +157,10 @@ public class MainActivity extends AppCompatActivity {
                 // You can also use a switch statement to handle specific RadioButtons
                 
             // }
-        // if (serviceRunning) {
+        if (GNSSServerService.isServiceRunning()) {
             stopGNSSService();
             startGNSSService();
-        // }
+        }
         }
     });
     }
@@ -222,7 +224,9 @@ public class MainActivity extends AppCompatActivity {
         serviceIntent.putExtra("providerId", getLocationSourceSwitchState());
         startForegroundService(serviceIntent);
 
-        updateUIState(true);
+        // isServiceRunning = true;
+
+        updateUIState(isServiceRunning);
     }
 
     private void stopGNSSService() {
@@ -232,7 +236,9 @@ public class MainActivity extends AppCompatActivity {
         Intent serviceIntent = new Intent(this, GNSSServerService.class);
         stopService(serviceIntent);
 
-        updateUIState(false);
+        // isServiceRunning = false;
+
+        updateUIState(isServiceRunning);
     }
 
     private void updateUIState(boolean serviceRunning) {
