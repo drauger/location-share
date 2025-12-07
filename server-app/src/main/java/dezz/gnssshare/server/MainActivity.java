@@ -226,7 +226,7 @@ public class MainActivity extends AppCompatActivity {
 
         // isServiceRunning = true;
 
-        updateUIState(isServiceRunning);
+        updateUIState(true);
     }
 
     private void stopGNSSService() {
@@ -238,7 +238,7 @@ public class MainActivity extends AppCompatActivity {
 
         // isServiceRunning = false;
 
-        updateUIState(isServiceRunning);
+        updateUIState(false);
     }
 
     private void updateUIState(boolean serviceRunning) {
